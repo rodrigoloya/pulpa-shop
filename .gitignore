@@ -3,6 +3,7 @@ dist/
 build/
 .output/
 .json/
+.vscode/
 
 # dependencies
 node_modules/
