@@ -1,15 +1,15 @@
 {
   "site": {
-    "title": "Astrofront",
-    "base_url": "https://astrofront.vercel.app/",
+    "title": "Pulpa Store",
+    "base_url": "https://pulpa.app/",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
-    "logo_darkmode": "/images/logo-darkmode.png",
+    "logo": "/images/logo-pulpa-letras-negras.png",
+    "logo_darkmode": "/images/logo_pulpa_letras_blancas.png",
     "logo_width": "150",
-    "logo_height": "33",
-    "logo_text": "Astrofront"
+    "logo_height": "80",
+    "logo_text": "Pulpa.dev"
   },
 
   "settings": {
@@ -22,24 +22,24 @@
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Designed And Developed by [Themefisher](https://themefisher.com/)"
+    "copyright": "Designed And Developed by [Themefisher] & Pulpa.dev (https://pulpa.dev/)"
   },
 
   "navigation_button": {
-    "enable": true,
+    "enable": false,
     "label": "Get Started",
     "link": "https://github.com/themefisher/astrofront"
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "Pulpa",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Shopify Storefront Boilerplate"
+    "meta_description": "Pulpa.dev Storefront"
   },
 
   "shopify": {
-    "currencySymbol": "৳",
-    "currencyCode": "BDT",
+    "currencySymbol": "$",
+    "currencyCode": "USD",
     "collections": {
       "hero_slider": "hidden-homepage-carousel",
       "featured_products": "featured-products"
