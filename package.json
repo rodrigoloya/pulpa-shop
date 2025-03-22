@@ -4,6 +4,7 @@
   "description": "Astro and Tailwindcss boilerplate",
   "author": "Themefisher",
   "license": "MIT",
+  "packageManager": "yarn@1.22.19",
   
   "type": "module",
   "scripts": {
