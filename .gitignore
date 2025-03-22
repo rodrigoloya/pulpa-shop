@@ -1,5 +1,5 @@
 # build output
-dist/
+
 .output/
 .json/
 
@@ -27,3 +27,7 @@ package-lock.json
 
 .netlify
 .vercel
+# ignore zip files
+*.zip
+*.tar.gz
+*.tgz
