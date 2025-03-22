@@ -7,7 +7,10 @@ import { defineConfig } from "astro/config";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
-import vercel from "@astrojs/vercel";
+
+
+import node from "@astrojs/node";
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,8 +18,8 @@ export default defineConfig({
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   output: "server",
-
   vite: { plugins: [tailwindcss()] },
+
   integrations: [
     react(),
     sitemap(),
@@ -51,5 +54,7 @@ export default defineConfig({
     extendDefaultPlugins: true,
   },
 
-  adapter: vercel(),
+  adapter: node({
+    mode: "standalone",
+  }),
 });
