@@ -1,0 +1,100 @@
+{
+  "pageInfo": {
+    "hasNextPage": true,
+    "hasPreviousPage": false
+  },
+  "products": [
+    {
+      "id": "1",
+      "title": "Producto 1",
+      "description": "Descripción del producto 1",
+      "price": "10.00",
+      "currencyCode": "USD",
+      "handle": "producto-1",
+      "featuredImage": {
+        "url": "https://example.com/producto-1.jpg",
+        "altText": "Imagen del producto 1"
+      },
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "10.00",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "15.00",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "v1",
+          "title": "Variante 1",
+          "price": "10.00",
+          "compareAtPrice": "12.00"
+        },
+        {
+          "id": "v2",
+          "title": "Variante 2",
+          "price": "15.00",
+          "compareAtPrice": "18.00"
+        }
+      ],
+      "compareAtPriceRange": {
+        "minVariantPrice": {
+          "amount": "12.00",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "18.00",
+          "currencyCode": "USD"
+        }
+      }
+    },
+    {
+      "id": "2",
+      "title": "Producto 2",
+      "description": "Descripción del producto 2",
+      "price": "20.00",
+      "currencyCode": "USD",
+      "handle": "producto-2",
+      "featuredImage": {
+        "url": "https://example.com/producto-2.jpg",
+        "altText": "Imagen del producto 2"
+      },
+      "priceRange": {
+        "minVariantPrice": {
+          "amount": "20.00",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "25.00",
+          "currencyCode": "USD"
+        }
+      },
+      "variants": [
+        {
+          "id": "v3",
+          "title": "Variante 1",
+          "price": "20.00",
+          "compareAtPrice": "22.00"
+        },
+        {
+          "id": "v4",
+          "title": "Variante 2",
+          "price": "25.00",
+          "compareAtPrice": "30.00"
+        }
+      ],
+      "compareAtPriceRange": {
+        "minVariantPrice": {
+          "amount": "22.00",
+          "currencyCode": "USD"
+        },
+        "maxVariantPrice": {
+          "amount": "30.00",
+          "currencyCode": "USD"
+        }
+      }
+    }
+  ]
+}

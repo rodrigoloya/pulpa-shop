@@ -62,6 +62,8 @@ import type {
   user,
   userOperation,
 } from "./types";
+import productos from "./productos.json";
+import colecciones from "./colecciones.json";
 
 const domain = import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN
   ? ensureStartsWith(import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN, "https://")
@@ -324,36 +326,12 @@ export async function getCollectionProducts({
   collection: string;
   reverse?: boolean;
   sortKey?: string;
-  filterCategoryProduct?: any[]; // Update the type based on your GraphQL schema
+  filterCategoryProduct?: any[];
 }): Promise<{ pageInfo: PageInfo | null; products: Product[] }> {
-  const res = await shopifyFetch<ShopifyCollectionProductsOperation>({
-    query: getCollectionProductsQuery,
-    tags: [TAGS.collections, TAGS.products],
-    variables: {
-      handle: collection,
-      reverse,
-      sortKey: sortKey === "CREATED_AT" ? "CREATED" : sortKey,
-      filterCategoryProduct,
-    } as {
-      handle: string;
-      reverse?: boolean;
-      sortKey?: string;
-      filterCategoryProduct?: any[];
-    },
-  });
-
-  if (!res.body.data.collection) {
-    return { pageInfo: null, products: [] };
-  }
-
-  // return reshapeProducts(removeEdgesAndNodes(res.body.data.collection.products));
-  const pageInfo = res.body.data?.collection?.products?.pageInfo;
-
+  // Retorna los datos dummy desde el archivo productos.json
   return {
-    pageInfo,
-    products: reshapeProducts(
-      removeEdgesAndNodes(res.body.data.collection.products),
-    ),
+    pageInfo: productos.pageInfo,
+    products: productos.products,
   };
 }
 
@@ -404,18 +382,8 @@ export async function getUserDetails(accessToken: string): Promise<user> {
 }
 
 export async function getCollections(): Promise<Collection[]> {
-  const res = await shopifyFetch<ShopifyCollectionsOperation>({
-    query: getCollectionsQuery,
-    tags: [TAGS.collections],
-  });
-  const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
-  const collections = [
-    ...reshapeCollections(shopifyCollections).filter(
-      (collection) => !collection.handle.startsWith("hidden"),
-    ),
-  ];
-
-  return collections;
+  // Retorna los datos dummy desde el archivo colecciones.json
+  return colecciones;
 }
 
 export async function getMenu(handle: string): Promise<Menu[]> {
@@ -456,29 +424,15 @@ export async function getPages(): Promise<Page[]> {
 }
 
 export async function getProduct(handle: string): Promise<Product | undefined> {
-  const res = await shopifyFetch<ShopifyProductOperation>({
-    query: getProductQuery,
-    tags: [TAGS.products],
-    variables: {
-      handle,
-    },
-  });
-
-  return reshapeProduct(res.body.data.product, false);
+  // Retorna el producto correspondiente desde el archivo productos.json
+  return productos.products.find((product : Product) => product.handle === handle);
 }
 
 export async function getProductRecommendations(
   productId: string,
 ): Promise<Product[]> {
-  const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
-    query: getProductRecommendationsQuery,
-    tags: [TAGS.products],
-    variables: {
-      productId,
-    },
-  });
-
-  return reshapeProducts(res.body.data.productRecommendations);
+  // Retorna todos los productos excepto el que coincide con el productId
+  return productos.products.filter((product: Product) => product.id !== productId);
 }
 
 export async function getVendors({
@@ -490,15 +444,9 @@ export async function getVendors({
   reverse?: boolean;
   sortKey?: string;
 }): Promise<{ vendor: string; productCount: number }[]> {
-  const res = await shopifyFetch<ShopifyProductsOperation>({
-    query: getVendorsQuery,
-    tags: [TAGS.products],
-    variables: {
-      query,
-      reverse,
-      sortKey,
-    },
-  });
+  const res = [{ vendor: "Vendor 1", productCount: 5 }]; 
+     
+  return res;
 
   const products = removeEdgesAndNodes(res.body.data.products);
 
@@ -579,14 +527,13 @@ export async function getProducts({
   };
 }
 
-export async function getHighestProductPrice(): Promise<{
-  amount: string;
-  currencyCode: string;
+export async function getHighestProductPrice(): 
+Promise<{amount: string; currencyCode: string;
 } | null> {
   try {
-    const res = await shopifyFetch<any>({
-      query: getHighestProductPriceQuery,
-    });
+    const res = { body: { data: { products: { edges: [
+      { node: { variants: { edges: [
+        { node: { price: { amount: "0.0", currencyCode: "USD" } } }] } } }] } } } };
 
     const highestProduct = res?.body?.data?.products?.edges[0]?.node;
     const highestProductPrice = highestProduct?.variants?.edges[0]?.node?.price;

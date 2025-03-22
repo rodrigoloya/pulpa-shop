@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "title": "Collection 1",
+    "handle": "collection-1",
+    "path": "/products/collection-1"
+  },
+  {
+    "id": "2",
+    "title": "Collection 2",
+    "handle": "collection-2",
+    "path": "/products/collection-2"
+  }
+]
