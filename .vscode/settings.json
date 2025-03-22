@@ -1,5 +1,7 @@
 {
   "files.associations": {
     "*.mdx": "markdown"
-  }
+  },
+  "appService.defaultWebAppToDeploy": "/subscriptions/38782110-775a-463c-b0c8-e6014571e6e7/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/pulpadev-shop",
+  "appService.deploySubpath": "."
 }
